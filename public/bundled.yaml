@@ -120,7 +120,8 @@ components:
           type: array
           items:
             type: string
-          example: Title is required
+          example:
+            - Title is required
     NotFoundError:
       type: object
       properties:
