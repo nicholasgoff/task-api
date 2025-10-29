@@ -1,63 +1,67 @@
-tasks:
-  get:
-    summary: List all tasks
-    tags: Tasks
-    parameters:
-      - name: completed
-        in: query
-        required: false
-        description: Filter tasks by completion status
-        schema:
-          type: boolean
-          example: true
-      - name: limit
-        in: query
-        required: false
-        description: Maximum number of tasks to return
-        schema:
-          type: integer
-          example: 10
-    responses:
-      '200':
-        description: OK
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: ../components/schemas/Task.yaml
-
-  post:
-    summary: Create a new task
-    tags: Tasks
-    requestBody:
-      required: true
+get:
+  summary: List all tasks
+  tags:
+    - Tasks  
+  parameters:
+    - name: completed
+      in: query
+      required: false
+      description: Filter tasks by completion status
+      schema:
+        type: boolean
+        example: true
+    - name: limit
+      in: query
+      required: false
+      description: Maximum number of tasks to return
+      schema:
+        type: integer
+        example: 10
+  responses:
+    '200':
+      description: OK
       content:
         application/json:
           schema:
-            type: object
-            required: [title]
-            properties:
-              title:
-                type: string
-                example: Buy groceries
-              completed:
-                type: boolean
-                example: false
-    responses:
-      '201':
-        description: Task created successfully
-        content:
-          application/json:
-            schema:
+            type: array
+            items:
               $ref: ../components/schemas/Task.yaml
-      '400':
-        $ref: ../components/responses/BadRequest.yaml
 
-taskById:
+post:
+  summary: Create a new task
+  tags:
+    - Tasks
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required: 
+            - title
+          properties:
+            title:
+              type: string
+              example: Buy groceries
+            completed:
+              type: boolean
+              example: false
+  responses:
+    '201':
+      description: Task created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+
+
+/{id}:
   get:
     summary: Get a task by ID
-    tags: Tasks
+    tags:
+      - Tasks
     parameters:
       - name: id
         in: path
@@ -77,5 +81,4 @@ taskById:
         $ref: ../components/responses/BadRequest.yaml
       '404':
         $ref: ../components/responses/NotFound.yaml
-
-    
+  
