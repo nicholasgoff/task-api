@@ -26,8 +26,7 @@ get:
             type: array
             items:
               $ref: ../components/schemas/Task.yaml
-/{id}:
-  get:
+  get/{id}: 
     summary: Get a task by ID 
     tags:
       - Tasks
@@ -52,7 +51,7 @@ get:
         $ref: ../components/responses/BadRequest.yaml
       '404':
         $ref: ../components/responses/NotFound.yaml
-        
+
 post:
   summary: Create a new task
   tags:

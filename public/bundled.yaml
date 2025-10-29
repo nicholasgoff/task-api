@@ -40,8 +40,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
-    /{id}:
-      get:
+      get/{id}:
         summary: Get a task by ID
         tags:
           - Tasks
