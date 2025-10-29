@@ -59,7 +59,81 @@ paths:
                 $ref: '#/components/schemas/Task'
         '400':
           $ref: '#/components/responses/BadRequest'
-    /tasks/{id}:
+    /{id}:
+      get:
+        summary: Get a task by ID
+        tags:
+          - Tasks
+        parameters:
+          - name: id
+            in: path
+            required: true
+            description: ID of the task to retrieve
+            schema:
+              type: integer
+              example: 1
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: ../components/schemas/Task.yaml
+          '400':
+            $ref: ../components/responses/BadRequest.yaml
+          '404':
+            $ref: ../components/responses/NotFound.yaml
+  /tasks/{id}:
+    get:
+      summary: List all tasks
+      tags:
+        - Tasks
+      parameters:
+        - name: completed
+          in: query
+          required: false
+          description: Filter tasks by completion status
+          schema:
+            type: boolean
+            example: true
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of tasks to return
+          schema:
+            type: integer
+            example: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      summary: Create a new task
+      tags:
+        - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    /{id}:
       get:
         summary: Get a task by ID
         tags:
@@ -100,6 +174,15 @@ components:
         completed:
           type: boolean
           example: false
+          default: false
+      required:
+        - title
+    NotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Task not found
     ValidationError:
       type: object
       properties:
@@ -117,3 +200,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidationError'
+responses:
+  BadRequest:
+    $ref: components/responses/BadRequest.yaml
+  NotFound:
+    $ref: components/responses/NotFound.yaml
