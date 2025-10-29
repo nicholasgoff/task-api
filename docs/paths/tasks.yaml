@@ -48,6 +48,7 @@ post:
       $ref: ../components/responses/BadRequest.yaml
 
 /{id}: 
+  get:
     summary: Get a task by ID 
     tags:
       - Tasks

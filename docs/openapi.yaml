@@ -14,6 +14,8 @@ tags:
 paths:
   /tasks:
     $ref: paths/tasks.yaml
+  /tasks/{id}:
+    $ref: paths/tasks.yaml#/~1{id}
 components:
   schemas:
     Task:

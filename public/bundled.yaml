@@ -60,6 +60,33 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
     /{id}:
+      get:
+        summary: Get a task by ID
+        tags:
+          - Tasks
+        parameters:
+          - name: id
+            in: path
+            required: true
+            description: ID of the task to retrieve
+            schema:
+              type: integer
+              example: 1
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Task'
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '404':
+            $ref: '#/components/responses/NotFound'
+  /tasks/{id}:
+    get:
       summary: Get a task by ID
       tags:
         - Tasks
@@ -79,11 +106,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../components/schemas/Task.yaml
+                  $ref: '#/components/schemas/Task'
         '400':
-          $ref: ../components/responses/BadRequest.yaml
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: ../components/responses/NotFound.yaml
+          $ref: '#/components/responses/NotFound'
 components:
   schemas:
     Task:
@@ -125,6 +152,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidationError'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
 responses:
   BadRequest:
     $ref: components/responses/BadRequest.yaml
