@@ -26,7 +26,28 @@ get:
             type: array
             items:
               $ref: ../components/schemas/Task.yaml
-  get/{id}: 
+  
+post:
+  summary: Create a new task
+  tags:
+    - Tasks
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Task.yaml
+  responses:
+    '201':
+      description: Task created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.yaml
+
+/{id}: 
     summary: Get a task by ID 
     tags:
       - Tasks
@@ -51,25 +72,5 @@ get:
         $ref: ../components/responses/BadRequest.yaml
       '404':
         $ref: ../components/responses/NotFound.yaml
-
-post:
-  summary: Create a new task
-  tags:
-    - Tasks
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/Task.yaml
-  responses:
-    '201':
-      description: Task created successfully
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Task.yaml
-    '400':
-      $ref: ../components/responses/BadRequest.yaml
 
     
