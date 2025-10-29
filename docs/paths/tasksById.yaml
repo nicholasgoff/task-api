@@ -4,7 +4,7 @@ get:
     - Tasks
   parameters:
     - name: id
-      in: path
+      in: query
       required: true
       description: ID of the task to retrieve
       schema:
