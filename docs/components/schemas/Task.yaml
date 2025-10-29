@@ -2,8 +2,8 @@ type: object
 properties:
   id:
     type: integer
-    example: 1
     readOnly: true
+    example: 1
   title:
     type: string
     example: Buy groceries
@@ -13,4 +13,3 @@ properties:
     default: false
 required:
   - title
-

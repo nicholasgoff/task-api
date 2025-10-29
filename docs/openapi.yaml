@@ -2,34 +2,29 @@ openapi: 3.1.0
 info:
   title: Task API
   version: 1.0.0
-
 servers:
   - url: http://localhost:3000
-    description: Local development server
+    description: local development server 
   - url: https://task-api-hvyv.onrender.com
-    description: Production server on Render
-
+    description: Production server on render
 tags:
   - name: Tasks
     description: Task-related endpoints
-
 paths:
   /tasks:
     $ref: paths/tasks.yaml
   /tasks/{id}:
     $ref: paths/tasks.yaml#/~1{id}
-
 components:
   schemas:
     Task:
-      $ref: ./components/schemas/Task.yaml
-    NotFoundError:
-      $ref: ./components/schemas/NotFoundError.yaml
+      $ref: components/schemas/Task.yaml
     ValidationError:
-      $ref: ./components/schemas/ValidationError.yaml
-
+      $ref: components/schemas/ValidationError.yaml
+    NotFoundError:
+      $ref: components/schemas/NotFoundError.yaml
   responses:
     BadRequest:
-      $ref: ./components/responses/BadRequest.yaml
+      $ref: components/responses/BadRequest.yaml
     NotFound:
-      $ref: ./components/responses/NotFound.yaml
+      $ref: components/responses/NotFound.yaml

@@ -1,7 +1,7 @@
 get:
   summary: List all tasks
   tags:
-    - Tasks  
+    - Tasks
   parameters:
     - name: completed
       in: query
@@ -37,7 +37,7 @@ post:
       application/json:
         schema:
           type: object
-          required: 
+          required:
             - title
           properties:
             title:
@@ -55,7 +55,6 @@ post:
             $ref: ../components/schemas/Task.yaml
     '400':
       $ref: ../components/responses/BadRequest.yaml
-
 
 /{id}:
   get:
