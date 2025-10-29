@@ -1,9 +1,9 @@
 type: object
 properties:
   id:
-    readOnly: true
     type: integer
     example: 1
+    readOnly: true
   title:
     type: string
     example: Buy groceries
@@ -13,3 +13,4 @@ properties:
     default: false
 required:
   - title
+

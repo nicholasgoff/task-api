@@ -1,5 +1,5 @@
 type: object
-properties: 
+properties:
   error:
     type: string
-    example: Task not found 
+    example: Task not found
