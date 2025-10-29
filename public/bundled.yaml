@@ -68,30 +68,6 @@ paths:
                 $ref: '#/components/schemas/Task'
         '400':
           $ref: '#/components/responses/BadRequest'
-    /{id}:
-      get:
-        summary: Get a task by ID
-        tags:
-          - Tasks
-        parameters:
-          - name: id
-            in: path
-            required: true
-            description: ID of the task to retrieve
-            schema:
-              type: integer
-              example: 1
-        responses:
-          '200':
-            description: OK
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Task'
-          '400':
-            $ref: '#/components/responses/BadRequest'
-          '404':
-            $ref: '#/components/responses/NotFound'
   /tasks/{id}:
     get:
       summary: Get a task by ID
