@@ -116,10 +116,6 @@ components:
         error:
           type: string
           example: Task not found
-        details:
-          type: array
-          items:
-            type: string
   responses:
     BadRequest:
       description: Invalid input
