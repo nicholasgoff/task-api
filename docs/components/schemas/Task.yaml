@@ -10,6 +10,4 @@ properties:
   completed:
     type: boolean
     example: false
-    default: false
-required:
-  - title
+    

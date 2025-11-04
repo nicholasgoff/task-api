@@ -36,16 +36,7 @@ post:
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - title
-          properties:
-            title:
-              type: string
-              example: Buy groceries
-            completed:
-              type: boolean
-              example: false
+          $ref: ../components/schemas/Task.yaml
   responses:
     '201':
       description: Task created successfully

@@ -49,16 +49,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - title
-              properties:
-                title:
-                  type: string
-                  example: Buy groceries
-                completed:
-                  type: boolean
-                  example: false
+              $ref: '#/components/schemas/Task'
       responses:
         '201':
           description: Task created successfully
@@ -87,7 +78,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -107,9 +100,6 @@ components:
         completed:
           type: boolean
           example: false
-          default: false
-      required:
-        - title
     ValidationError:
       type: object
       properties:
@@ -120,14 +110,16 @@ components:
           type: array
           items:
             type: string
-          example:
-            - Title is required
     NotFoundError:
       type: object
       properties:
         error:
           type: string
           example: Task not found
+        details:
+          type: array
+          items:
+            type: string
   responses:
     BadRequest:
       description: Invalid input

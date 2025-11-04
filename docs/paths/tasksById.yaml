@@ -16,7 +16,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Task.yaml
+            type: array
+            items:
+              $ref: ../components/schemas/Task.yaml
     '400':
       $ref: ../components/responses/BadRequest.yaml
     '404':

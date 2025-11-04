@@ -2,9 +2,9 @@ type: object
 properties:
   error:
     type: string
-    example: "Validation failed"
+    example: Validation failed
   details:
     type: array
     items:
       type: string
-    example: ["Title is required"]
+    
